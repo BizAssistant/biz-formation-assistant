@@ -1,4 +1,26 @@
-.progress { display: grid; gap: 0.5rem; }
-.progress__text { font-size: 0.85rem; color: #9CA3AF; }
-.progress__bar { width: 100%; height: 8px; border-radius: 9999px; background: rgba(16,185,129,0.2); overflow: hidden; }
-.progress__fill { height: 100%; background: linear-gradient(90deg, #10B981, #059669); }
+
+.progress {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.progress__text {
+  font-size: 0.85rem;
+  color: $text-muted; // slate gray
+}
+
+.progress__bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 9999px;
+  background: rgba($primary, 0.25);
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba($accent, 0.4);
+}
+
+.progress__fill {
+  height: 100%;
+  background: linear-gradient(90deg, $primary, $accent);
+  box-shadow: 0 0 20px rgba($accent, 0.6);
+  transition: width 0.3s ease;
+}
