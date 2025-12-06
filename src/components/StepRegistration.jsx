@@ -1,44 +1,53 @@
 import React from 'react';
 
-const tasks = [
-  'Get an EIN (Employer Identification Number)',
-  'Register business name (DBA if needed)',
-  'File formation documents with state',
-  'Create operating agreement/bylaws',
-  'Obtain business licenses and permits',
-  'Open business bank account',
-  'Get business insurance',
-  'Register for state taxes'
-];
+function RegistrationStep({ businessData, updateBusinessData, nextStep, prevStep }) {
+  const tasks = [
+    'Get an EIN (Employer Identification Number)',
+    'Register business name (DBA if needed)',
+    'File formation documents with state',
+    'Create operating agreement/bylaws',
+    'Obtain business licenses and permits',
+    'Open business bank account',
+    'Get business insurance',
+    'Register for state taxes',
+  ];
 
-export default function StepRegistration({ value, onChange }) {
   return (
-    <div className="fade-in">
-      <h2 className="text-emerald-glow">Business Registration Checklist</h2>
-      <p style={{ color: '#9CA3AF' }}>Complete these essential steps to make it official</p>
-
-      <div className="card--glass" style={{ padding: '1rem', marginBottom: '1rem' }}>
+    <div className="space-y-6">
+      <h2 className="text-2xl font-bold text-primary-glow">
+        Business Registration Checklist
+      </h2>
+      <div className="space-y-4">
         {tasks.map((task, idx) => (
-          <div key={idx} style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
+          <div key={idx} className="flex items-center space-x-3">
             <input
               type="checkbox"
-              checked={value[`task${idx}`] || false}
-              onChange={(e) => onChange({ ...value, [`task${idx}`]: e.target.checked })}
+              checked={businessData[`task${idx}`] || false}
+              onChange={(e) =>
+                updateBusinessData({ [`task${idx}`]: e.target.checked })
+              }
+              className="w-5 h-5 accent-purple-600 hover:accent-cyan-400 transition"
             />
-            <span style={{ marginLeft: '0.5rem', color: '#E5E7EB' }}>{task}</span>
+            <label className="text-slate-300">{task}</label>
           </div>
         ))}
       </div>
-
-      <div className="form">
-        <label>Registration Notes</label>
-        <textarea
-          rows={4}
-          value={value.notes || ''}
-          onChange={(e) => onChange({ ...value, notes: e.target.value })}
-          placeholder="Track important details, dates, confirmation numbers..."
-        />
+      <div className="flex justify-between">
+        <button
+          onClick={prevStep}
+          className="px-4 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-800 transition"
+        >
+          Back
+        </button>
+        <button
+          onClick={nextStep}
+          className="px-4 py-2 bg-gradient-to-r from-purple-600 to-cyan-500 text-white rounded-lg shadow-[0_0_12px_rgba(6,182,212,0.6)] hover:scale-105 transition"
+        >
+          Next
+        </button>
       </div>
     </div>
   );
 }
+
+export default RegistrationStep;
