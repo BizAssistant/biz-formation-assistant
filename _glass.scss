@@ -1,0 +1,2 @@
+.card--dark { @include card(); }
+.card--glass { @include glass; padding: 0.75rem 1rem; }
