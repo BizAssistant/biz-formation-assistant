@@ -1,2 +1,14 @@
-.card--dark { @include card(); }
-.card--glass { @include glass; padding: 0.75rem 1rem; }
+.card--dark {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba($primary, 0.3);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 0 20px rgba($accent, 0.25);
+}
+
+.card--glass {
+  background: rgba($primary, 0.08);
+  border: 1px solid rgba($accent, 0.25);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+}
