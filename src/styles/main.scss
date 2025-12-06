@@ -1,0 +1,22 @@
+@import './_variables';
+@import './_mixins';
+@import './_animations';
+@import './_buttons';
+@import './_inputs';
+@import './_glass';
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  background: $hunter-green;
+  color: $text;
+  overflow-x: hidden;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+.text-emerald-glow { color: $emerald-glow; text-shadow: 0 0 20px rgba($emerald-glow, 0.5); }
+.text-orange-glow { color: $red-orange; text-shadow: 0 0 20px rgba($red-orange, 0.5); }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: $dark-green; }
+::-webkit-scrollbar-thumb { background: linear-gradient(135deg, $emerald 0%, $emerald-glow 100%); border-radius: 4px; }
+.safe-top { padding-top: max(1rem, env(safe-area-inset-top)); }
+.safe-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
