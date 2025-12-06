@@ -20,3 +20,14 @@ body {
 ::-webkit-scrollbar-thumb { background: linear-gradient(135deg, $emerald 0%, $emerald-glow 100%); border-radius: 4px; }
 .safe-top { padding-top: max(1rem, env(safe-area-inset-top)); }
 .safe-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+
+.text-primary-glow {
+  color: $primary;
+  text-shadow: 0 0 20px rgba($primary, 0.6);
+}
+
+.text-accent-glow {
+  color: $accent;
+  text-shadow: 0 0 20px rgba($accent, 0.6);
+}
+
