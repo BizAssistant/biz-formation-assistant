@@ -13,8 +13,11 @@ r2_buckets = [
 
 durable_objects = [
   { name = "SessionManager", class_name = "SessionManager" },
-  { name = "RoleManager", class_name = "RoleManager" }
-]
+  { name = "RoleManager", class_name = "RoleManager" },
+  { name = "AUDIT_LOGGER", class_name = "AuditLogger" } 
+  ]
+  
+migrations = [ { tag = "v1", new_classes = ["AuditLogger"] } ]
 
 analytics_engine_datasets = [
   { binding = "ANALYTICS_ENGINE", dataset = "bizform_metrics" }
