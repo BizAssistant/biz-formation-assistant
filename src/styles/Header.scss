@@ -1,0 +1,58 @@
+@import './_variables';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 0 20px rgba($accent, 0.25);
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__brand {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: $primary;
+    text-shadow: 0 0 20px rgba($primary, 0.6);
+  }
+
+  &__subtitle {
+    font-size: 0.75rem;
+    color: $text-muted;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+.btn-glass {
+  background: rgba($primary, 0.08);
+  border: 1px solid rgba($accent, 0.25);
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba($accent, 0.6);
+  }
+}
+
+.btn-text {
+  font-weight: 600;
+  color: $accent;
+  text-shadow: 0 0 12px rgba($accent, 0.6);
+}
