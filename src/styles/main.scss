@@ -1,9 +1,9 @@
-@import './_variables';
-@import './_mixins';
-@import './_animations';
-@import './_buttons';
-@import './_inputs';
-@import './_glass';
+@use './_variables';
+@use './_mixins';
+@use './_animations';
+@use './_buttons';
+@use './_inputs';
+@use './_glass';
 
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 body {
