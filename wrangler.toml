@@ -1,0 +1,31 @@
+name = "bizform-worker"
+main = "src/worker/index.js"
+compatibility_date = "$(date +%Y-%m-%d)"
+account_id = "${CF_ACCOUNT_ID}"
+
+kv_namespaces = [
+  { binding = "BIZFORM_KV", id = "${KV_ID}" }
+]
+
+r2_buckets = [
+  { binding = "BIZFORM_R2", bucket_name = "bizform-reports" }
+]
+
+durable_objects = [
+  { name = "SessionManager", class_name = "SessionManager" },
+  { name = "RoleManager", class_name = "RoleManager" }
+]
+
+analytics_engine_datasets = [
+  { binding = "ANALYTICS_ENGINE", dataset = "bizform_metrics" }
+]
+
+[observability]
+logs = true
+traces = true
+
+[vars]
+CF_ACCESS_PUBLIC_KEY = "${CF_ACCESS_PUBLIC_KEY}"
+CF_ACCESS_AUD = "${CF_ACCESS_AUD}"
+CF_API_TOKEN = "${CF_API_TOKEN}"
+CF_ZONE_ID = "${CF_ZONE_ID}"
