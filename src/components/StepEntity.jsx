@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/EntityStep.scss';
+import '../styles/StepEntity.scss';
 
-function EntityStep({ businessData, updateBusinessData, nextStep, prevStep }) {
+function StepEntity({ businessData, updateBusinessData, nextStep, prevStep }) {
   const entities = [
     { type: 'LLC', desc: 'Limited Liability Company' },
     { type: 'Corporation', desc: 'C-Corp or S-Corp structure' },
@@ -38,5 +38,5 @@ function EntityStep({ businessData, updateBusinessData, nextStep, prevStep }) {
   );
 }
 
-export default EntityStep;
+export default StepEntity;
 
