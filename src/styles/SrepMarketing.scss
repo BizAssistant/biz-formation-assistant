@@ -1,0 +1,97 @@
+@import './_variables';
+
+.marketing-step {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.marketing-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $primary;
+  text-shadow: 0 0 20px rgba($primary, 0.6);
+}
+
+.marketing-form {
+  display: grid;
+  gap: 1rem;
+
+  label {
+    color: $text-muted;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid $text-muted;
+    border-radius: 8px;
+    background: $background;
+    color: $text;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus {
+      border-color: $accent;
+      box-shadow: 0 0 8px rgba($accent, 0.6);
+      outline: none;
+    }
+  }
+}
+
+.channels-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.channel-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $text;
+
+  input[type='checkbox'] {
+    accent-color: $primary;
+
+    &:hover {
+      accent-color: $accent;
+    }
+  }
+
+  span {
+    font-size: 0.85rem;
+  }
+}
+
+.marketing-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-back {
+  padding: 0.5rem 1rem;
+  background: $text-muted;
+  color: $text;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: darken($text-muted, 10%);
+  }
+}
+
+.btn-next {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(90deg, $primary, $accent);
+  color: $text;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba($accent, 0.6);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
