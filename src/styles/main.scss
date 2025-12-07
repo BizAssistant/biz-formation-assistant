@@ -1,38 +1,86 @@
 @use './_variables';
+@use './Form';
+@use './Button';
 
-body {
-  background: $background;
-  color: $text;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-.text-primary-glow {
-  color: $primary;
-  text-shadow: 0 0 20px rgba($primary, 0.6);
-}
-
-.text-accent-glow {
-  color: $accent;
-  text-shadow: 0 0 20px rgba($accent, 0.6);
-}
-
-.card--dark {
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba($primary, 0.3);
-  border-radius: 14px;
+.app-main {
+  max-width: 960px;
+  margin: 0 auto;
   padding: 1rem;
-  box-shadow: 0 0 20px rgba($accent, 0.25);
 }
 
-.btn-metallic {
-  background: linear-gradient(135deg, $primary, $accent);
-  border: none;
-  color: $text;
+.step-nav {
+  margin-bottom: 1rem;
+}
+
+.step-buttons {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+}
+
+.step-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  margin-right: 8px;
+  border: 1px solid rgba($accent, 0.3);
+  background: rgba($accent, 0.1);
+  transition: all 0.2s ease;
+
+  &.active {
+    border: 2px solid $primary;
+  }
+
+  &.completed {
+    background: linear-gradient(135deg, $primary 0%, darken($primary, 10%) 100%);
+  }
+}
+
+.step-label {
+  font-size: 0.75rem;
+  color: $text-muted;
+  font-weight: 400;
+
+  &.active {
+    color: $accent;
+    font-weight: 600;
+  }
+}
+
+.step-connector {
+  width: 32px;
+  height: 4px;
+  border-radius: 4px;
+  margin: 0 8px;
+  background: rgba($accent, 0.2);
+
+  &.completed {
+    background: linear-gradient(90deg, $primary, darken($primary, 10%));
+  }
+}
+
+.step-content {
+  margin-bottom: 1rem;
+}
+
+.step-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-prev {
   border-radius: 9999px;
   padding: 0.75rem 1.25rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 0 12px rgba($accent, 0.6);
-  transition: transform 0.2s ease;
-  &:hover { transform: scale(1.05); }
+}
+
+.btn-next {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
