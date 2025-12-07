@@ -16,6 +16,8 @@ jobs:
           node-version: '18'
       - name: Install Wrangler
         run: npm i -g wrangler
+      - name: Install Scss
+        run: npm install -D sass
       - name: Install deps
         run: npm ci
       - name: Build
