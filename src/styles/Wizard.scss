@@ -1,0 +1,20 @@
+@import './_variables';
+
+.wizard-container {
+  max-width: 64rem; // same as max-w-4xl
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: rgba($background, 0.9);
+  border: 1px solid rgba($primary, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 0 24px rgba($accent, 0.25);
+}
+
+.wizard-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: $primary;
+  text-shadow: 0 0 20px rgba($primary, 0.6);
+}
