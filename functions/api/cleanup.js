@@ -9,5 +9,10 @@ export async function onRequest(context) {
     }
   }
 
+  // Log cleanup
+  const id = env.AUDIT_LOGGER.idFromName("global");
+  const obj = env.AUDIT_LOGGER.get(id);
+  await obj.fetch(`https://audit?action=cleanup&user=admin`);
+
   return new Response("Old reports cleaned up");
 }
