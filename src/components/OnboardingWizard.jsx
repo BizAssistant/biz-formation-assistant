@@ -5,6 +5,7 @@ import RegistrationStep from './RegistrationStep';
 import MarketingStep from './MarketingStep';
 import FinanceStep from './FinanceStep';
 import WebsiteStep from './WebsiteStep';
+import '../styles/Wizard.scss';
 
 const steps = [
   { name: 'Concept', component: ConceptStep },
@@ -38,11 +39,13 @@ function Wizard() {
   const StepComponent = steps[currentStep].component;
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold text-center mb-6">Business Formation Assistant</h1>
+    <div className="wizard-container">
+      <h1 className="wizard-title">Business Formation Assistant</h1>
       <StepComponent
         businessData={businessData[steps[currentStep].name.toLowerCase()] || {}}
-        updateBusinessData={(data) => updateBusinessData(steps[currentStep].name.toLowerCase(), data)}
+        updateBusinessData={(data) =>
+          updateBusinessData(steps[currentStep].name.toLowerCase(), data)
+        }
         nextStep={nextStep}
         prevStep={prevStep}
       />
