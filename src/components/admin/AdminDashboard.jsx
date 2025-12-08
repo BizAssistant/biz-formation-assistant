@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 export default function AdminDashboard() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("");
   const [reports, setReports] = useState([]);
   const [audit, setAudit] = useState([]);
 
@@ -16,7 +16,7 @@ export default function AdminDashboard() {
     alert('Cleanup triggered');
   };
 
-  if (!user) return null;
+  if (!user) return "";
 
   return (
     <div className="card--dark safe-top">

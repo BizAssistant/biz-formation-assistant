@@ -1,6 +1,7 @@
 import React from 'react';
+import '../styles/StepFinance.scss';
 
-function FinanceStep({ businessData, updateBusinessData, nextStep, prevStep }) {
+function StepFinance({ businessData, updateBusinessData, nextStep, prevStep }) {
   const tools = [
     'Accounting software (QuickBooks, Xero, FreshBooks)',
     'Payment processing (Stripe, Square, PayPal)',
@@ -11,18 +12,13 @@ function FinanceStep({ businessData, updateBusinessData, nextStep, prevStep }) {
   ];
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-primary-glow">
-        Financial Foundation
-      </h2>
-      <div className="space-y-4">
+    <div className="finance-step">
+      <h2 className="finance-title">Financial Foundation</h2>
+      <div className="finance-form">
         <div>
-          <label className="block text-sm font-medium text-slate-300">
-            Startup Costs
-          </label>
+          <label>Startup Costs</label>
           <input
             type="number"
-            className="w-full px-4 py-2 border border-slate-600 rounded-lg bg-slate-900 text-slate-200 focus:border-cyan-400 focus:ring focus:ring-cyan-500/40 transition"
             value={businessData.startupCosts || ''}
             onChange={(e) =>
               updateBusinessData({ startupCosts: e.target.value })
@@ -30,11 +26,8 @@ function FinanceStep({ businessData, updateBusinessData, nextStep, prevStep }) {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-300">
-            Funding Source
-          </label>
+          <label>Funding Source</label>
           <select
-            className="w-full px-4 py-2 border border-slate-600 rounded-lg bg-slate-900 text-slate-200 focus:border-cyan-400 focus:ring focus:ring-cyan-500/40 transition"
             value={businessData.fundingSource || ''}
             onChange={(e) =>
               updateBusinessData({ fundingSource: e.target.value })
@@ -50,46 +43,34 @@ function FinanceStep({ businessData, updateBusinessData, nextStep, prevStep }) {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-300">
-            Financial Tools Setup
-          </label>
+          <label>Financial Tools Setup</label>
           {tools.map((tool, idx) => (
-            <div key={idx} className="flex items-center space-x-3 mb-2">
+            <div key={idx} className="finance-tool">
               <input
                 type="checkbox"
-                className="w-4 h-4 accent-purple-600 hover:accent-cyan-400 transition"
                 checked={businessData[`tool${idx}`] || false}
                 onChange={(e) =>
                   updateBusinessData({ [`tool${idx}`]: e.target.checked })
                 }
               />
-              <label className="text-sm text-slate-200">{tool}</label>
+              <span>{tool}</span>
             </div>
           ))}
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-300">
-            Pricing Strategy
-          </label>
+          <label>Pricing Strategy</label>
           <textarea
-            className="w-full px-4 py-2 border border-slate-600 rounded-lg bg-slate-900 text-slate-200 focus:border-cyan-400 focus:ring focus:ring-cyan-500/40 transition"
             rows="3"
             value={businessData.pricing || ''}
             onChange={(e) => updateBusinessData({ pricing: e.target.value })}
           />
         </div>
       </div>
-      <div className="flex justify-between">
-        <button
-          onClick={prevStep}
-          className="px-4 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-800 transition"
-        >
+      <div className="finance-actions">
+        <button onClick={prevStep} className="btn-back">
           Back
         </button>
-        <button
-          onClick={nextStep}
-          className="px-4 py-2 bg-gradient-to-r from-purple-600 to-cyan-500 text-white rounded-lg shadow-[0_0_12px_rgba(6,182,212,0.6)] hover:scale-105 transition"
-        >
+        <button onClick={nextStep} className="btn-next">
           Next
         </button>
       </div>
@@ -97,4 +78,4 @@ function FinanceStep({ businessData, updateBusinessData, nextStep, prevStep }) {
   );
 }
 
-export default FinanceStep;
+export default StepFinance;

@@ -1,0 +1,30 @@
+@use '_variables'
+
+.domain-page {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+
+  h1 {
+    color: #333;
+  }
+
+  .search-form {
+    margin: 20px 0;
+
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  }
+}

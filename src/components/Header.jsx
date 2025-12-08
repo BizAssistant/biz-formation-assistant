@@ -1,23 +1,24 @@
+
 import React from 'react';
+import '../styles/Header.scss';
 
 export default function Header({ onSave, onExport }) {
   return (
-    <header className="card--dark" style={{ position: 'sticky', top: 0, zIndex: 50 }}>
-      <div className="safe-top" />
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+    <header className="header card--dark safe-top">
+      <div className="header__inner">
+        <div className="header__brand">
           <img src="/logo.png" alt="BizForm" width="32" height="32" />
           <div>
-            <h1 className="text-orange-glow" style={{ fontWeight: 700 }}>BizForm</h1>
-            <p style={{ fontSize: '0.75rem', color: '#9CA3AF' }}>Powered by InsightHunter</p>
+            <h1 className="header__title">BizForm</h1>
+            <p className="header__subtitle">Powered by InsightHunter</p>
           </div>
         </div>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <button className="card--glass" onClick={onSave} title="Save Progress" style={{ padding: '0.5rem', borderRadius: '9999px' }}>
-            <span className="text-emerald-glow" style={{ fontWeight: 600 }}>Save</span>
+        <div className="header__actions">
+          <button className="btn-glass" onClick={onSave} title="Save Progress">
+            <span className="btn-text">Save</span>
           </button>
-          <button className="card--glass" onClick={onExport} title="Export PDF" style={{ padding: '0.5rem', borderRadius: '9999px' }}>
-            <span className="text-emerald-glow" style={{ fontWeight: 600 }}>Export</span>
+          <button className="btn-glass" onClick={onExport} title="Export PDF">
+            <span className="btn-text">Export</span>
           </button>
         </div>
       </div>

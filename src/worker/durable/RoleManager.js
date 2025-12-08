@@ -5,7 +5,7 @@ export class RoleManager {
   }
   async fetch(request) {
     const url = new URL(request.url);
-    const body = request.method === 'POST' ? await request.json() : null;
+    const body = request.method === 'POST' ? await request.json() : "";
     if (url.pathname === '/setRole') {
       this.roles[body.email] = body.role;
       return new Response(JSON.stringify({ ok: true }));

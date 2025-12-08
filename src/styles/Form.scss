@@ -1,0 +1,42 @@
+@use './_variables';
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.form-label {
+  color: $text-muted;
+  font-size: 0.9rem;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid $text-muted;
+  border-radius: 8px;
+  background: $background;
+  color: $text;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus {
+    border-color: $accent;
+    box-shadow: 0 0 8px rgba($accent, 0.6);
+    outline: none;
+  }
+}
+
+.form-textarea {
+  resize: vertical;
+}
+
+.form-checkbox {
+  accent-color: $primary;
+
+  &:hover {
+    accent-color: $accent;
+  }
+}

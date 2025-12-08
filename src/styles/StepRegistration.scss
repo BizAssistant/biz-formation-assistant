@@ -1,0 +1,43 @@
+@use './_variables';
+@use './Form'; // reuse shared form styles
+@use './Button'; // if you scaffolded shared button styles
+
+.registration-step {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.registration-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $primary;
+  text-shadow: 0 0 20px rgba($primary, 0.6);
+}
+
+.registration-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.registration-task {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  label {
+    color: $text-muted;
+  }
+
+  .form-checkbox {
+    accent-color: $primary;
+
+    &:hover {
+      accent-color: $accent;
+    }
+  }
+}
+
+.registration-actions {
+  display: flex;
+  justify-content: space-between;
+}
