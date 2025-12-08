@@ -3,7 +3,7 @@ import { Line } from 'react-chartjs-2';
 import '../styles/AnalyticsDashboard.scss';
 
 export default function AnalyticsDashboard() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState("");
 
   useEffect(() => {
     fetch('/admin/analytics')
