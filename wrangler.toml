@@ -3,6 +3,11 @@ main = "src/worker/index.js"
 compatibility_date = "$(date +%Y-%m-%d)"
 account_id = "${CF_ACCOUNT_ID}"
 
+env.production]
+routes = [
+  { pattern = "api.bizform.turneratlanta.com/*", zone_name = "turneratlanta.com" }
+]
+
 kv_namespaces = [
   { binding = "BIZFORM_KV", id = "${KV_ID}" }
 ]
@@ -23,12 +28,25 @@ analytics_engine_datasets = [
   { binding = "ANALYTICS_ENGINE", dataset = "bizform_metrics" }
 ]
 
+[[d1_databases]]
+binding = "DB"
+database_name = "bizform"
+database_id = "85307b62-c33f-459f-99c8-9ee8ea7043b8"
+
+[env.production.vars]
+CF_ACCESS_PUBLIC_nKEY = "${CF_ACCESS_PUBLIC_KEY}"
+CF_ACCESS_AUD = "${CF_ACCESS_AUD}"
+
+[env.production.secrets]
+NAMECOM_USERNAME = "YOUR_NAMECOM_USERNAME"
+NAMECOM_TOKEN = "YOUR_NAMECOM_TOKEN"
+CLOUDFLARE_API_TOKEN = "${CF_API_TOKEN}"
+CLOUDFLARE_ZONE_ID = "${CF_ZONE_ID}"
+
 [observability]
 logs = true
 traces = true
 
 [vars]
-CF_ACCESS_PUBLIC_KEY = "${CF_ACCESS_PUBLIC_KEY}"
-CF_ACCESS_AUD = "${CF_ACCESS_AUD}"
 CF_API_TOKEN = "${CF_API_TOKEN}"
 CF_ZONE_ID = "${CF_ZONE_ID}"
