@@ -15,7 +15,7 @@ export default function DomainSearch() {
   };
 
   return (
-    <div>
+    <div className="domain-search">
       <h2>Search Domain</h2>
       <input value={domain} onChange={e => setDomain(e.target.value)} placeholder="Enter domain" />
       <button onClick={searchDomain}>Search</button>
