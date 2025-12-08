@@ -1,6 +1,6 @@
-@use './_variables';
-@use './Form';
-@use './Button';
+@use './_variables' as vars;
+@use './Form' as form;
+@use './Button' as button;
 
 .app-main {
   max-width: 960px;
@@ -29,26 +29,26 @@
   height: 48px;
   border-radius: 9999px;
   margin-right: 8px;
-  border: 1px solid rgba($accent, 0.3);
-  background: rgba($accent, 0.1);
+  border: 1px solid rgba(vars.$accent, 0.3);
+  background: rgba(vars.$accent, 0.1);
   transition: all 0.2s ease;
 
   &.active {
-    border: 2px solid $primary;
+    border: 2px solid vars.$primary;
   }
 
   &.completed {
-    background: linear-gradient(135deg, $primary 0%, darken($primary, 10%) 100%);
+    background: linear-gradient(135deg, vars.$primary 0%, darken(vars.$primary, 10%) 100%);
   }
 }
 
 .step-label {
   font-size: 0.75rem;
-  color: $text-muted;
+  color: vars.$text-muted;
   font-weight: 400;
 
   &.active {
-    color: $accent;
+    color: vars.$accent;
     font-weight: 600;
   }
 }
@@ -58,10 +58,10 @@
   height: 4px;
   border-radius: 4px;
   margin: 0 8px;
-  background: rgba($accent, 0.2);
+  background: rgba(vars.$accent, 0.2);
 
   &.completed {
-    background: linear-gradient(90deg, $primary, darken($primary, 10%));
+    background: linear-gradient(90deg, vars.$primary, darken(vars.$primary, 10%));
   }
 }
 
