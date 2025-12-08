@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Business Formation Assistant</title>
-  <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="icon" type="image/png" href="/logo.png">
+  <link rel="manifest" href="/public/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="/public/logo.png">
   <script type="module" src="/src/App.jsx"></script>
 </head>
 <body>
   <div id="app"></div>
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js');
+      navigator.serviceWorker.register('/public/sw.js');
     }
   </script>
 </body>
