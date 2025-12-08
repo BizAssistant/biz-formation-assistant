@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export default function DomainSearch() {
   const [domain, setDomain] = useState('');
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState("");
 
   const searchDomain = async () => {
     const response = await fetch('/api/domains/search', {
@@ -19,7 +19,7 @@ export default function DomainSearch() {
       <h2>Search Domain</h2>
       <input value={domain} onChange={e => setDomain(e.target.value)} placeholder="Enter domain" />
       <button onClick={searchDomain}>Search</button>
-      {results && <pre>{JSON.stringify(results, null, 2)}</pre>}
+      {results && <pre>{JSON.stringify(results, "", 2)}</pre>}
     </div>
   );
 }

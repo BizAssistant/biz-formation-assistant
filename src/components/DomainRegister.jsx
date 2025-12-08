@@ -4,7 +4,7 @@ export default function DomainRegister() {
   const [domainName, setDomainName] = useState('');
   const [years, setYears] = useState(1);
   const [contact, setContact] = useState('');
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState("");
 
   const registerDomain = async () => {
     const response = await fetch('/api/domains/register', {
@@ -23,7 +23,7 @@ export default function DomainRegister() {
       <input value={years} onChange={e => setYears(e.target.value)} placeholder="Years" type="number" />
       <input value={contact} onChange={e => setContact(e.target.value)} placeholder="Contact info" />
       <button onClick={registerDomain}>Register</button>
-      {result && <pre>{JSON.stringify(result, null, 2)}</pre>}
+      {result && <pre>{JSON.stringify(result, "", 2)}</pre>}
     </div>
   );
 }
