@@ -1,6 +1,6 @@
-@import './_variables';
-@import './Form';
-@import './Button';
+@use './_variables';
+@use './Form';
+@use './Button';
 
 .website-step {
   display: grid;
