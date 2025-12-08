@@ -35,7 +35,36 @@ export default {
       indexes: [Date.now()]
     });
 
-    // Routes
+    // Domain search and registration routes
+    if (url.pathname === '/api/domains/search' && request.method === 'POST') {
+      const { domain } = await request.json();
+      const namecomResponse = await fetch('https://api.name.com/v4/domains:search', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Basic ' + btoa(env.NAMECOM_USERNAME + ':' + env.NAMECOM_TOKEN),
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ domainName: domain })
+      });
+      const data = await namecomResponse.json();
+      return new Response(JSON.stringify(data), { headers: { 'Content-Type': 'application/json' } });
+    }
+
+    if (url.pathname === '/api/domains/register' && request.method === 'POST') {
+      const { domainName, years, contact } = await request.json();
+      const namecomResponse = await fetch('https://api.name.com/v4/domains', {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Basic ' + btoa(env.NAMECOM_USERNAME + ':' + env.NAMECOM_TOKEN),
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ domainName, years, contact })
+      });
+      const data = await namecomResponse.json();
+      return new Response(JSON.stringify(data), { headers: { 'Content-Type': 'application/json' } });
+    }
+
+    // Existing routes
     if (url.pathname === '/whoami') return handleAuthWhoAmI(user);
 
     if (url.pathname === '/save-progress' && request.method === 'POST') return handleProgress.save(request, env, user);
