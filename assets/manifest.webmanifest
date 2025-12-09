@@ -1,0 +1,10 @@
+{
+  "name": "Business Formation Assistant",
+  "short_name": "BizForm",
+  "description": "Complete guide to starting your business",
+  "start_url": "/dist",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#0A1410",
+  "icons": [{ "src": "/assets/logo.png", "sizes": "192x192", "type": "image/png" }]
+}
