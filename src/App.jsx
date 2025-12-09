@@ -1,10 +1,10 @@
 import React from 'react';
-import Main from './Main.jsx';
+import Main from './main.jsx';
 
 function App() {
   return (
     <div id="app">
-      <Main />
+     <main />
     </div>
   );
 }
