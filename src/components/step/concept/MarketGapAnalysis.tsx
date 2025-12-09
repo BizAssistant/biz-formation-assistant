@@ -1,7 +1,11 @@
 import React from 'react';
 import './styles/MarketGapAnalysis.scss';
 
-function MarketGapAnalysis({ isStandard }) {
+interface MarketGapAnalysisProps {
+  isStandard: boolean;
+}
+
+function MarketGapAnalysis({ isStandard }: MarketGapAnalysisProps) {
   return (
     <div className="card--glass step-concept__card">
       <div className="step-concept__section-header">
