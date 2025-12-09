@@ -4,7 +4,7 @@ export async function onRequest(context) {
   const body = await request.arrayBuffer();
   const objectName = `report-${Date.now()}.pdf`;
 
-  await env.BIZFORMS_R2.put(objectName, body);
+  await env.BIZFORM_R2.put(objectName, body);
 
   // Log action
   const id = env.ANALYTICS_ENGINE.idFromName("global");
