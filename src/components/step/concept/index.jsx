@@ -1,8 +1,14 @@
 import React from 'react';
 import Quiz from './Quiz.jsx';
-import IndustryList from './IndustryList.jsx';
-import MarketGapHelper from './MarketGapHelper.jsx';
-import Resources from './Resources.jsx';
+import MarketGapAnalysis from './MarketGapAnalysis.jsx';
+import SuccessStories from './SuccessStories.jsx';
+import TrendAnalysis from './TrendAnalysis.jsx';
+import FinancialProjections from './FinancialProjections.jsx';
+import Networking from './Networking.jsx';
+import ExpertAdvice from './ExpertAdvice.jsx';
+import ResourceLibrary from './ResourceLibrary.jsx';
+import LegalGuidance from './LegalGuidance.jsx';
+import PersonalizedRecommendations from './PersonalizedRecommendations.jsx';
 import './styles/index.scss';
 
 function Concept({ plan, onNext }) {
@@ -20,35 +26,19 @@ function Concept({ plan, onNext }) {
 
       <div className="step-concept__layout">
         <section className="step-concept__left">
-          <div className="card--glass step-concept__card">
-            <h3>Core Concept</h3>
-            <div className="form-group">
-              <label htmlFor="businessConcept">Business concept</label>
-              <textarea
-                id="businessConcept"
-                name="businessConcept"
-                rows={4}
-                placeholder="Describe what your business will do and who it will serve…"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="targetMarket">Target market</label>
-              <input
-                id="targetMarket"
-                name="targetMarket"
-                type="text"
-                placeholder="e.g. freelancers, restaurant owners, SaaS founders"
-              />
-            </div>
-          </div>
-
           <Quiz />
+          <MarketGapAnalysis isStandard={isStandard} />
+          <SuccessStories isStandard={isStandard} />
+          <TrendAnalysis isStandard={isStandard} />
+          <FinancialProjections isPremium={isPremium} />
         </section>
 
         <section className="step-concept__right">
-          <IndustryList isStandard={isStandard} />
-          <MarketGapHelper isPremium={isPremium} />
-          <Resources isPremium={isPremium} />
+          <Networking isStandard={isStandard} />
+          <ExpertAdvice isPremium={isPremium} />
+          <ResourceLibrary isPremium={isPremium} />
+          <LegalGuidance isPremium={isPremium} />
+          <PersonalizedRecommendations isPremium={isPremium} />
         </section>
       </div>
 
