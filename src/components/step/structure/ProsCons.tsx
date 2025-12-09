@@ -1,7 +1,11 @@
 import React from 'react';
 import './styles/ProsCons.scss';
 
-function ProsCons({ isStandard }) {
+interface ProsConsProps {
+  isStandard: boolean;
+}
+
+function ProsCons({ isStandard }: ProsConsProps) {
   return (
     <div className="card--glass step-structure__card">
       <div className="step-structure__section-header">
