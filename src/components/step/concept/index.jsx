@@ -1,17 +1,22 @@
 import React from 'react';
-import Quiz from './Quiz.jsx';
-import MarketGapAnalysis from './MarketGapAnalysis.jsx';
-import SuccessStories from './SuccessStories.jsx';
-import TrendAnalysis from './TrendAnalysis.jsx';
-import FinancialProjections from './FinancialProjections.jsx';
-import Networking from './Networking.jsx';
-import ExpertAdvice from './ExpertAdvice.jsx';
-import ResourceLibrary from './ResourceLibrary.jsx';
-import LegalGuidance from './LegalGuidance.jsx';
-import PersonalizedRecommendations from './PersonalizedRecommendations.jsx';
+import Quiz from './Quiz';
+import MarketGapAnalysis from './MarketGapAnalysis';
+import SuccessStories from './SuccessStories';
+import TrendAnalysis from './TrendAnalysis';
+import FinancialProjections from './FinancialProjections';
+import Networking from './Networking';
+import ExpertAdvice from './ExpertAdvice';
+import ResourceLibrary from './ResourceLibrary';
+import LegalGuidance from './LegalGuidance';
+import PersonalizedRecommendations from './PersonalizedRecommendations';
 import './styles/index.scss';
 
-function Concept({ plan, onNext }) {
+interface ConceptProps {
+  plan: 'free' | 'standard' | 'premium';
+  onNext: () => void;
+}
+
+function Concept({ plan, onNext }: ConceptProps) {
   const isStandard = plan === 'standard' || plan === 'premium';
   const isPremium = plan === 'premium';
 
