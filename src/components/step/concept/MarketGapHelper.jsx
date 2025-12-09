@@ -1,45 +1,34 @@
 import React from 'react';
-import './styles/MarketGapHelper.scss';
+import './styles/MarketGapAnalysis.scss';
 
-function MarketGapHelper({ isPremium }) {
+function MarketGapAnalysis({ isStandard }) {
   return (
     <div className="card--glass step-concept__card">
       <div className="step-concept__section-header">
-        <h3>Market Gap Helper</h3>
-        <span className={`badge ${isPremium ? 'badge--cyan' : 'badge--locked'}`}>
-          {isPremium ? 'Premium' : 'Premium feature'}
+        <h3>Market Gap Analysis</h3>
+        <span className={`badge ${isStandard ? 'badge--cyan' : 'badge--locked'}`}>
+          {isStandard ? 'Standard & Premium' : 'Upgrade to unlock'}
         </span>
       </div>
 
-      {!isPremium && (
+      {!isStandard && (
         <p className="step-concept__locked-text">
-          Map competitors and uncover underserved niches with a guided market gap checklist in the Premium plan.
+          Identify gaps in the market by analyzing competitors and finding underserved niches.
         </p>
       )}
 
-      {isPremium && (
+      {isStandard && (
         <>
-          <p className="step-concept__hint">
-            List 3–5 competitors and note who they ignore. The tool highlights potential gaps.
-          </p>
           <div className="form-group">
-            <label htmlFor="competitors">Key competitors</label>
-            <textarea
-              id="competitors"
-              rows={3}
-              placeholder="List competitors and what they do well / poorly…"
-            />
+            <label htmlFor="competitors">Competitors:</label>
+            <input id="competitors" type="text" placeholder="e.g. Competitor A, Competitor B" />
           </div>
           <div className="form-group">
-            <label htmlFor="underserved">Underserved customers or use‑cases</label>
-            <textarea
-              id="underserved"
-              rows={3}
-              placeholder="Who is not well‑served today? e.g. micro‑SaaS founders, non‑profits, etc."
-            />
+            <label htmlFor="underservedNiches">Underserved Niches:</label>
+            <input id="underservedNiches" type="text" placeholder="e.g. Micro-SaaS, Non-profits" />
           </div>
-          <button type="button" className="btn-glass">
-            Highlight potential gaps
+          <button type="button" className="btn-metallic btn-metallic--shimmer">
+            Find gaps
           </button>
         </>
       )}
@@ -47,4 +36,4 @@ function MarketGapHelper({ isPremium }) {
   );
 }
 
-export default MarketGapHelper;
+export default MarketGapAnalysis;
