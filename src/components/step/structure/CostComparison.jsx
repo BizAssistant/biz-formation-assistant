@@ -1,7 +1,11 @@
 import React from 'react';
 import './styles/CostComparison.scss';
 
-function CostComparison({ isPremium }) {
+interface CostComparisonProps {
+  isPremium: boolean;
+}
+
+function CostComparison({ isPremium }: CostComparisonProps) {
   return (
     <div className="card--glass step-structure__card">
       <div className="step-structure__section-header">
