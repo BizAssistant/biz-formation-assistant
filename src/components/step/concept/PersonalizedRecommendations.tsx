@@ -1,7 +1,11 @@
 import React from 'react';
 import './styles/PersonalizedRecommendations.scss';
 
-function PersonalizedRecommendations({ isPremium }) {
+interface PersonalizedRecommendationsProps {
+  isPremium: boolean;
+}
+
+function PersonalizedRecommendations({ isPremium }: PersonalizedRecommendationsProps) {
   return (
     <div className="card--glass step-concept__card">
       <div className="step-concept__section-header">
@@ -20,7 +24,7 @@ function PersonalizedRecommendations({ isPremium }) {
       {isPremium && (
         <div className="form-group">
           <label htmlFor="userInput">Tell us about yourself:</label>
-          <textarea id="userInput" name="userInput" rows="4" cols="50"></textarea>
+          <textarea id="userInput" name="userInput" rows={4} cols={50}></textarea>
           <button type="button" className="btn-metallic btn-metallic--shimmer">
             Get recommendations
           </button>
