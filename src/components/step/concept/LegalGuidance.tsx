@@ -1,7 +1,11 @@
 import React from 'react';
 import './styles/LegalGuidance.scss';
 
-function LegalGuidance({ isPremium }) {
+interface LegalGuidanceProps {
+  isPremium: boolean;
+}
+
+function LegalGuidance({ isPremium }: LegalGuidanceProps) {
   return (
     <div className="card--glass step-concept__card">
       <div className="step-concept__section-header">
