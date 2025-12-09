@@ -1,10 +1,15 @@
 import React from 'react';
-import LegalStructure from './LegalStructure.jsx';
-import ProsCons from './ProsCons.jsx';
-import CostComparison from './CostComparison.jsx';
+import LegalStructure from './LegalStructure';
+import ProsCons from './ProsCons';
+import CostComparison from './CostComparison';
 import './styles/index.scss';
 
-function Structure({ plan, onNext }) {
+interface StructureProps {
+  plan: 'free' | 'standard' | 'premium';
+  onNext: () => void;
+}
+
+function Structure({ plan, onNext }: StructureProps) {
   const isStandard = plan === 'standard' || plan === 'premium';
   const isPremium = plan === 'premium';
 
