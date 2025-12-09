@@ -1,7 +1,11 @@
 import React from 'react';
 import './styles/ResourceLibrary.scss';
 
-function ResourceLibrary({ isPremium }) {
+interface ResourceLibraryProps {
+  isPremium: boolean;
+}
+
+function ResourceLibrary({ isPremium }: ResourceLibraryProps) {
   return (
     <div className="card--glass step-concept__card">
       <div className="step-concept__section-header">
