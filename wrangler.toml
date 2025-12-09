@@ -2,18 +2,19 @@ name = "bizform-worker"
 main = "src/worker/index.js"
 compatibility_date = "2025-12-09"
 account_id = "${CF_ACCOUNT_ID}"
+type = "module"
 
-routes = [
-  { pattern = "api.bizform.turneratlanta.com/*", zone_name = "turneratlanta.com" }
-]
+[[routes]]
+pattern = "api.bizform.turneratlanta.com/*"
+zone_name = "turneratlanta.com"
 
-kv_namespaces = [
-  { binding = "BIZFORM_KV", id = "${KV_ID}" }
-]
+[[kv_namespaces]]
+binding = "BIZFORM_KV"
+id = "${KV_ID}"
 
-r2_buckets = [
-  { binding = "BIZFORM_R2", bucket_name = "bizform-reports" }
-]
+[[r2_buckets]]
+binding = "BIZFORM_R2"
+bucket_name = "bizform-metrics"
 
 # Durable Objects configuration
 [[durable_objects.bindings]]
@@ -28,11 +29,13 @@ class_name = "RoleManager"
 name = "AUDIT_LOGGER"
 class_name = "AuditLogger"
 
-migrations = [ { tag = "v1", new_classes = ["AuditLogger"] } ]
+[[migrations]]
+tag = "v1"
+new_classes = ["AuditLogger"]
 
-analytics_engine_datasets = [
-  { binding = "ANALYTICS_ENGINE", dataset = "bizform_metrics" }
-]
+[[analytics_engine_datasets]]
+binding = "ANALYTICS_ENGINE"
+dataset = "bizform_metrics"
 
 [[d1_databases]]
 binding = "DB"
