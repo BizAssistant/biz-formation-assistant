@@ -6,7 +6,7 @@ export async function onRequest(context) {
 
   if (!key) return new Response("Missing key", { status: 400 });
 
-  const object = await env.BIZFORMS_R2.get(key);
+  const object = await env.BIZFORM_R2.get(key);
   if (!object) return new Response("Not found", { status: 404 });
 
   return new Response(object.body, {
