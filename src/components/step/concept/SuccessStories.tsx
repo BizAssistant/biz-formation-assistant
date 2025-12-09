@@ -1,7 +1,11 @@
 import React from 'react';
 import './styles/SuccessStories.scss';
 
-function SuccessStories({ isStandard }) {
+interface SuccessStoriesProps {
+  isStandard: boolean;
+}
+
+function SuccessStories({ isStandard }: SuccessStoriesProps) {
   return (
     <div className="card--glass step-concept__card">
       <div className="step-concept__section-header">
