@@ -2,6 +2,7 @@ name = "bizform-worker"
 main = "src/worker/index.js"
 compatibility_date = "2025-12-09"
 account_id = "${CF_ACCOUNT_ID}"
+type = "module"
 
 [[routes]]
 pattern = "api.bizform.turneratlanta.com/*"
