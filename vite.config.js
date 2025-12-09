@@ -3,11 +3,23 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    port: 5173,
-    allowedHosts: "zp2tqg-5173.csb.app"
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // additional options
+      },
+    },
   },
   build: {
-    outDir: 'dist'
-  }
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
+  },
+  server: {
+    port: 3000,
+    open: true,
+  },
+  preview: {
+    port: 3000,
+  },
 });

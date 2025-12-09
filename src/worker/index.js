@@ -1,4 +1,8 @@
 import { verify } from '@cfworker/jwt';
+import { handleDomains } from './handlers/domains.js';
+import { handlePricing } from './handlers/pricing.js';
+import { handleDNS } from './handlers/dns.js';
+import { handleBilling } from './handlers/billing.js';
 import { handleAdmin } from './handlers/admin.js';
 import { handleProgress } from './handlers/progress.js';
 import { handleReport } from './handlers/report.js';
@@ -13,12 +17,15 @@ const ROLE_MAP = {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    const path = url.pathname;
 
-    // Access JWT required for all routes (you can exempt public ones if desired)
+    // JWT verification
     const jwt = request.headers.get('Cf-Access-Jwt-Assertion');
     if (!jwt) return new Response('Unauthorized', { status: 401 });
 
-    const { valid, payload } = await verify(jwt, env.CF_ACCESS_PUBLIC_KEY, { audience: env.CF_ACCESS_AUD });
+    const { valid, payload } = await verify(jwt, env.CF_ACCESS_PUBLIC_KEY, { 
+      audience: env.CF_ACCESS_AUD 
+    });
     if (!valid) return new Response('Forbidden', { status: 403 });
 
     // RBAC via IdP groups
@@ -28,31 +35,47 @@ export default {
     }
     const user = { email: payload.email, role };
 
-    // Observability datapoint
+    // Analytics
     await env.ANALYTICS_ENGINE.writeDataPoint({
-      blobs: [user.email, user.role, url.pathname],
+      blobs: [user.email, user.role, path],
       doubles: [0],
       indexes: [Date.now()]
     });
 
-    // Routes
-    if (url.pathname === '/whoami') return handleAuthWhoAmI(user);
+    // Auth routes
+    if (path === '/whoami') return handleAuthWhoAmI(user);
 
-    if (url.pathname === '/save-progress' && request.method === 'POST') return handleProgress.save(request, env, user);
-    if (url.pathname.startsWith('/progress/') && request.method === 'GET') return handleProgress.load(request, env, user);
+    // Domain routes
+    if (path.startsWith('/api/domains')) return handleDomains(request, env, user);
 
-    if (url.pathname === '/report' && request.method === 'POST') return handleReport.upload(request, env, user);
-    if (url.pathname.startsWith('/download/') && request.method === 'GET') return handleReport.download(request, env, user);
-    if (url.pathname.startsWith('/report/') && request.method === 'DELETE') return handleReport.delete(request, env, user);
+    // Pricing routes
+    if (path.startsWith('/api/pricing')) return handlePricing(request, env, user);
 
-    if (url.pathname.startsWith('/admin')) {
-      if (role === 'admin' || role === 'super-admin') return handleAdmin(request, env, user);
+    // DNS routes
+    if (path.startsWith('/api/dns')) return handleDNS(request, env, user);
+
+    // Billing routes
+    if (path.startsWith('/api/billing')) return handleBilling(request, env, user);
+
+    // Progress routes
+    if (path === '/save-progress' && request.method === 'POST') 
+      return handleProgress.save(request, env, user);
+    if (path.startsWith('/progress/') && request.method === 'GET') 
+      return handleProgress.load(request, env, user);
+
+    // Report routes
+    if (path === '/report' && request.method === 'POST') 
+      return handleReport.upload(request, env, user);
+    if (path.startsWith('/download/') && request.method === 'GET') 
+      return handleReport.download(request, env, user);
+    if (path.startsWith('/report/') && request.method === 'DELETE') 
+      return handleReport.delete(request, env, user);
+
+    // Admin routes
+    if (path.startsWith('/admin')) {
+      if (role === 'admin' || role === 'super-admin') 
+        return handleAdmin(request, env, user);
       return new Response('Forbidden', { status: 403 });
-    }
-
-    // Optional: Logs analytics endpoint (requires Analytics Engine dataset named bizform_logs)
-    if (url.pathname === '/admin/analytics/logs') {
-      return new Response(JSON.stringify([]), { headers: { 'Content-Type': 'application/json' } });
     }
 
     return new Response('Not found', { status: 404 });

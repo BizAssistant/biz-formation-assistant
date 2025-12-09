@@ -1,0 +1,46 @@
+@use './_variables';
+
+.audit-card {
+  @extend .card--dark;
+  padding: 1.5rem;
+  box-shadow: 0 0 20px rgba($accent, 0.25);
+}
+
+.audit-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $primary;
+  text-shadow: 0 0 20px rgba($primary, 0.6);
+  margin-bottom: 1rem;
+}
+
+.audit-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba($background, 0.9);
+  border-radius: 12px;
+  overflow: hidden;
+
+  th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    color: $text;
+    border-bottom: 1px solid rgba($text-muted, 0.3);
+  }
+
+  th {
+    color: $accent;
+    text-shadow: 0 0 12px rgba($accent, 0.6);
+    font-weight: 600;
+  }
+
+  tr:hover {
+    background: rgba($accent, 0.1);
+    box-shadow: 0 0 8px rgba($accent, 0.4);
+  }
+}
+
+.loading-text {
+  color: $text-muted;
+  font-style: italic;
+}

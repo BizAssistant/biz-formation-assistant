@@ -1,0 +1,69 @@
+name = "bizform-worker"
+main = "src/worker/index.js"
+compatibility_date = "2025-12-09"
+account_id = "${CF_ACCOUNT_ID}"
+type = "module"
+
+[[routes]]
+pattern = "api.bizform.turneratlanta.com/*"
+zone_name = "turneratlanta.com"
+
+[[kv_namespaces]]
+binding = "BIZFORM_KV"
+id = "${KV_ID}"
+
+[[r2_buckets]]
+binding = "BIZFORM_R2"
+bucket_name = "bizform-metrics"
+
+# Durable Objects configuration
+[[durable_objects.bindings]]
+name = "SessionManager"
+class_name = "SessionManager"
+
+[[durable_objects.bindings]]
+name = "RoleManager"
+class_name = "RoleManager"
+
+[[durable_objects.bindings]]
+name = "AUDIT_LOGGER"
+class_name = "AuditLogger"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["AuditLogger"]
+
+[[analytics_engine_datasets]]
+binding = "ANALYTICS_ENGINE"
+dataset = "bizform_metrics"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "bizform"
+database_id = "85307b62-c33f-459f-99c8-9ee8ea7043b8"
+
+[env.production.vars]
+CF_ACCESS_PUBLIC_KEY = "${CF_ACCESS_PUBLIC_KEY}"
+CF_ACCESS_AUD = "${CF_ACCESS_AUD}"
+
+[env.production.secrets]
+NAMECOM_USERNAME = "jameshunterturner@gmail.com"
+NAMECOM_TOKEN = "a75db66021325ad1d64392369aab88316004fcf6"
+CLOUDFLARE_API_TOKEN = "${CF_API_TOKEN}"
+CLOUDFLARE_ZONE_ID = "${CF_ZONE_ID}"
+
+[observability]
+enabled = true
+
+[observability.logs]
+enabled = true
+
+[observability.traces]
+enabled = true
+
+[vars]
+CF_API_TOKEN = "${CF_API_TOKEN}"
+CF_ZONE_ID = "${CF_ZONE_ID}"
+
+[pages]
+pages_build_output_dir = "dist"
