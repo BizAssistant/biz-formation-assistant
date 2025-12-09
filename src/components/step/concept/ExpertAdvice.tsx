@@ -1,7 +1,11 @@
 import React from 'react';
 import './styles/ExpertAdvice.scss';
 
-function ExpertAdvice({ isPremium }) {
+interface ExpertAdviceProps {
+  isPremium: boolean;
+}
+
+function ExpertAdvice({ isPremium }: ExpertAdviceProps) {
   return (
     <div className="card--glass step-concept__card">
       <div className="step-concept__section-header">
