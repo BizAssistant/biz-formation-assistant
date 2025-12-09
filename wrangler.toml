@@ -1,6 +1,6 @@
 name = "bizform-worker"
 main = "src/worker/index.js"
-compatibility_date = "$(date +%Y-%m-%d)"
+compatibility_date = "2025-12-08"  # Use a real ISO-8601 date (YYYY-MM-DD)
 account_id = "${CF_ACCOUNT_ID}"
 
 routes = [
@@ -15,13 +15,22 @@ r2_buckets = [
   { binding = "BIZFORM_R2", bucket_name = "bizform-reports" }
 ]
 
-durable_objects = [
-  { name = "SessionManager", class_name = "SessionManager" },
-  { name = "RoleManager", class_name = "RoleManager" },
-  { name = "AUDIT_LOGGER", class_name = "AuditLogger" } 
-  ]
-  
-migrations = [ { tag = "v1", new_classes = ["AuditLogger"] } ]
+# Durable Objects configuration
+[[durable_objects.bindings]]
+name = "SessionManager"
+class_name = "SessionManager"
+
+[[durable_objects.bindings]]
+name = "RoleManager"
+class_name = "RoleManager"
+
+[[durable_objects.bindings]]
+name = "AUDIT_LOGGER"
+class_name = "AuditLogger"
+
+migrations = [
+  { tag = "v1", new_classes = ["AuditLogger"] }
+]
 
 analytics_engine_datasets = [
   { binding = "ANALYTICS_ENGINE", dataset = "bizform_metrics" }
@@ -33,7 +42,7 @@ database_name = "bizform"
 database_id = "85307b62-c33f-459f-99c8-9ee8ea7043b8"
 
 [env.production.vars]
-CF_ACCESS_PUBLIC_nKEY = "${CF_ACCESS_PUBLIC_KEY}"
+CF_ACCESS_PUBLIC_KEY = "${CF_ACCESS_PUBLIC_KEY}"
 CF_ACCESS_AUD = "${CF_ACCESS_AUD}"
 
 [env.production.secrets]
@@ -43,8 +52,13 @@ CLOUDFLARE_API_TOKEN = "${CF_API_TOKEN}"
 CLOUDFLARE_ZONE_ID = "${CF_ZONE_ID}"
 
 [observability]
-logs = true
-traces = true
+enabled = true
+
+[observability.logs]
+enabled = true
+
+[observability.traces]
+enabled = true
 
 [vars]
 CF_API_TOKEN = "${CF_API_TOKEN}"
