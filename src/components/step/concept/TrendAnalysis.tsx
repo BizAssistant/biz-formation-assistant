@@ -1,7 +1,11 @@
 import React from 'react';
 import './styles/TrendAnalysis.scss';
 
-function TrendAnalysis({ isStandard }) {
+interface TrendAnalysisProps {
+  isStandard: boolean;
+}
+
+function TrendAnalysis({ isStandard }: TrendAnalysisProps) {
   return (
     <div className="card--glass step-concept__card">
       <div className="step-concept__section-header">
