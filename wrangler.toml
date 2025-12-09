@@ -61,3 +61,6 @@ enabled = true
 [vars]
 CF_API_TOKEN = "${CF_API_TOKEN}"
 CF_ZONE_ID = "${CF_ZONE_ID}"
+
+[pages]
+pages_build_output_dir = "dist"
