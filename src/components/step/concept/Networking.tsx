@@ -1,7 +1,11 @@
 import React from 'react';
 import './styles/Networking.scss';
 
-function Networking({ isStandard }) {
+interface NetworkingProps {
+  isStandard: boolean;
+}
+
+function Networking({ isStandard }: NetworkingProps) {
   return (
     <div className="card--glass step-concept__card">
       <div className="step-concept__section-header">
