@@ -1,7 +1,8 @@
-name = "biz-formation-assistant-worker"
+name = "bizform-worker"
 main = "src/worker/index.js"
-compatibility_date = "2025-12-08"  # Use a real ISO-8601 date (YYYY-MM-DD)
-account_id = "18c8e61a3669253dcfd0c7eec6be36a3"
+compatibility_date = "2025-12-09"
+account_id = "${CF_ACCOUNT_ID}"
+
 routes = [
   { pattern = "api.bizform.turneratlanta.com/*", zone_name = "turneratlanta.com" }
 ]
@@ -27,9 +28,7 @@ class_name = "RoleManager"
 name = "AUDIT_LOGGER"
 class_name = "AuditLogger"
 
-migrations = [
-  { tag = "v1", new_classes = ["AuditLogger"] }
-]
+migrations = [ { tag = "v1", new_classes = ["AuditLogger"] } ]
 
 analytics_engine_datasets = [
   { binding = "ANALYTICS_ENGINE", dataset = "bizform_metrics" }
