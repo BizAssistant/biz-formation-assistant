@@ -3,11 +3,9 @@ import './styles/Quiz.scss';
 
 function Quiz() {
   return (
-    <div className="card--glass step-concept__card step-concept__quiz">
-      <div className="step-concept__section-header">
-        <h3>Idea Discovery Quiz</h3>
-        <span className="badge badge--cyan">Included in all plans</span>
-      </div>
+    <div className="card--glass step-concept__card">
+      <h3>Idea Discovery Quiz</h3>
+      <span className="badge badge--cyan">Included in all plans</span>
       <p className="step-concept__hint">
         Not sure where to start? Answer a few questions and get tailored idea suggestions.
       </p>
