@@ -1,7 +1,11 @@
 import React from 'react';
 import './styles/FinancialProjections.scss';
 
-function FinancialProjections({ isPremium }) {
+interface FinancialProjectionsProps {
+  isPremium: boolean;
+}
+
+function FinancialProjections({ isPremium }: FinancialProjectionsProps) {
   return (
     <div className="card--glass step-concept__card">
       <div className="step-concept__section-header">
