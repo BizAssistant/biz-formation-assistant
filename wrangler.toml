@@ -9,7 +9,7 @@ zone_name = "turneratlanta.com"
 
 [[kv_namespaces]]
 binding = "BIZFORM_KV"
-id = "${KV_ID}"
+id = "6529b00482d04c0fa4a0bfa52027c262"
 
 [[r2_buckets]]
 binding = "BIZFORM_R2"
