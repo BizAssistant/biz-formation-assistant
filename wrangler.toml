@@ -57,6 +57,7 @@ enabled = true
 enabled = true
 
 [[vars]]
+WORKER_URL = "https://biz-formation-asssitant.dmco.workers.dev/"
 CF_API_TOKEN = "${CF_API_TOKEN}"
 CF_ZONE_ID = "${CF_ZONE_ID}"
 CF_ACCESS_PUBLIC_KEY = "${CF_ACCESS_PUBLIC_KEY}"
