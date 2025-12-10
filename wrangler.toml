@@ -41,7 +41,7 @@ binding = "DB"
 database_name = "bizform"
 database_id = "85307b62-c33f-459f-99c8-9ee8ea7043b8"
 
-[[secrets]]
+[[env.secrets]]
 NAMECOM_USERNAME = "jameshunterturner@gmail.com"
 NAMECOM_TOKEN = "a75db66021325ad1d64392369aab88316004fcf6"
 CLOUDFLARE_API_TOKEN = "${CF_API_TOKEN}"
