@@ -1,9 +1,8 @@
 // src/styles/Main.scss
-@use 'variables';
-@use 'components';
+@use "./_variables" as *;
+@use "./_mixins" as *;
 
-$primary-color: #00bcd4;
-$secondary-color: #7c3aed;
+@use "./_components";
 
 @mixin button-style {
   background: linear-gradient(135deg, $primary-color, $secondary-color);
