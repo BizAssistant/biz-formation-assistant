@@ -1,8 +1,7 @@
 name = "bizform-worker"
-main = "src/worker/index.js"
+main = "backend/worker/index.js"
 compatibility_date = "2025-12-09"
 account_id = "${CF_ACCOUNT_ID}"
-type = "module"
 
 [[routes]]
 pattern = "api.bizform.turneratlanta.com/*"
@@ -61,9 +60,9 @@ enabled = true
 [observability.traces]
 enabled = true
 
-[vars]
+[[vars]]
 CF_API_TOKEN = "${CF_API_TOKEN}"
 CF_ZONE_ID = "${CF_ZONE_ID}"
 
-[pages]
+[[pages]]
 pages_build_output_dir = "dist"
