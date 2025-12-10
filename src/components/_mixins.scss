@@ -1,0 +1,13 @@
+@mixin glass($opacity: 0.08, $blur: 18px, $borderOpacity: 0.15) {
+  backdrop-filter: blur($blur);
+  background: rgba(255, 255, 255, $opacity);
+  border: 1px solid rgba(255, 255, 255, $borderOpacity);
+}
+
+@mixin glow($color, $strength: 0.45) {
+  box-shadow: 0 0 22px rgba($color, $strength);
+}
+
+@mixin inner-glow($color, $strength: 0.45) {
+  box-shadow: inset 0 0 18px rgba($color, $strength);
+}
