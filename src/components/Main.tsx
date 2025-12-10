@@ -37,7 +37,7 @@ interface BizFormState {
   domainIdea: string;
 }
 
-export default function Landing(): JSX.Element {
+export default function Main(): JSX.Element {
   const [idx, setIdx] = useState<number>(0);
   const [values, setValues] = useState<BizFormState>({
     businessName: '',
@@ -292,3 +292,4 @@ export default function Landing(): JSX.Element {
     </div>
   );
 }
+
