@@ -2,6 +2,7 @@ name = "bizform-worker"
 main = "backend/worker/index.ts"
 compatibility_date = "2025-12-09"
 account_id = "18c8e61a3669253dcfd0c7eec6be36a3"
+pages_build_output_dir = "dist"
 
 [[routes]]
 pattern = "api.bizform.turneratlanta.com/*"
@@ -57,11 +58,11 @@ enabled = true
 enabled = true
 
 [[vars]]
-WORKER_URL = "https://biz-formation-asssitant.dmco.workers.dev/"
+WORKER_URL = "https://api.bizform.turneratlanta.com/"
 CF_API_TOKEN = "${CF_API_TOKEN}"
 CF_ZONE_ID = "${CF_ZONE_ID}"
 CF_ACCESS_PUBLIC_KEY = "${CF_ACCESS_PUBLIC_KEY}"
 CF_ACCESS_AUD = "${CF_ACCESS_AUD}"
 
-[[pages]]
-pages_build_output_dir = "dist"
+
+
