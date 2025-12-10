@@ -1,5 +1,5 @@
 const CACHE = "bizform-v1";
-const CORE = ["/", "/index.html", "/assets/manifest.webmanifest", "/assets/logo.png"};
+const CORE = ["/", "/index.html", "/manifest.webmanifest", "/assets/logo.png"};
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(CORE)));
