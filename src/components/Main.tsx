@@ -1,34 +1,31 @@
-import React, { useState, useEffect } from "react";
-import { validateStep } from "./utils/validation";
-import useAutosave from "./hooks/useAutosave";
-import { track } from "./utils/analytics";
+import React, { useState, useEffect } from 'react';
+import useAutosave from './hooks/useAutosave';
+import { validateStep } from './utils/validation';
+import { track } from './utils/analytics';
 
 type Step =
-  | "Concept"
-  | "Structure"
-  | "Name"
-  | "Registration"
-  | "Financing"
-  | "Accounting"
-  | "Marketing"
-  | "Domain";
+  | 'Concept'
+  | 'Structure'
+  | 'Name'
+  | 'Registration'
+  | 'Financing'
+  | 'Accounting'
+  | 'Marketing'
+  | 'Domain';
 
 const STEPS: Step[] = [
-  "Concept",
-  "Structure",
-  "Name",
-  "Registration",
-  "Financing",
-  "Accounting",
-  "Marketing",
-  "Domain",
+  'Concept',
+  'Structure',
+  'Name',
+  'Registration',
+  'Financing',
+  'Accounting',
+  'Marketing',
+  'Domain',
 ];
 
-const AUTOSAVE_KEY = "bizform:v1";
+const AUTOSAVE_KEY = 'bizform:v1';
 
-// ----------------------
-// Types
-// ----------------------
 interface BizFormState {
   businessName: string;
   oneLiner: string;
@@ -40,43 +37,33 @@ interface BizFormState {
   domainIdea: string;
 }
 
-// ----------------------
-// Component
-// ----------------------qx 
-export default function Main() {
+export default function Landing(): JSX.Element {
   const [idx, setIdx] = useState<number>(0);
-
   const [values, setValues] = useState<BizFormState>({
-    businessName: "",
-    oneLiner: "",
-    structure: "LLC",
-    registrationState: "",
-    fundingNeed: "",
-    accountingStack: "",
-    marketingPlan: "",
-    domainIdea: "",
+    businessName: '',
+    oneLiner: '',
+    structure: 'LLC',
+    registrationState: '',
+    fundingNeed: '',
+    accountingStack: '',
+    marketingPlan: '',
+    domainIdea: '',
   });
-
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const autosave = useAutosave(AUTOSAVE_KEY, values);
+  const autosave = useAutosave<BizFormState>(AUTOSAVE_KEY, values);
 
-  // ----------------------
-  // Load saved draft
-  // ----------------------
   useEffect(() => {
     const saved = autosave.load();
     if (saved) {
       setValues((v) => ({ ...v, ...saved }));
-      track("draft_loaded");
+      track('draft_loaded');
     }
-    track("landing_open", { step: STEPS[idx] });
+    track('landing_open', { step: STEPS[idx] });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // ----------------------
-  // Track step change
-  // ----------------------
   useEffect(() => {
-    track("step_view", { step: STEPS[idx], index: idx });
+    track('step_view', { step: STEPS[idx], index: idx });
   }, [idx]);
 
   const currentStep = STEPS[idx];
@@ -85,73 +72,52 @@ export default function Main() {
     setValues((prev) => ({ ...prev, [key]: value }));
   }
 
-  // ----------------------
-  // Step Locking Logic
-  // ----------------------
   function attemptJump(targetIndex: number) {
-    // Allow backwards always
     if (targetIndex <= idx) {
       setIdx(targetIndex);
       return;
     }
-
-    // Prevent skipping ahead
+    // require previous steps to validate
     for (let i = 0; i < targetIndex; i++) {
       const s = STEPS[i];
       const v = validateStep(s, values);
       if (!v.ok) {
         setErrors(v.errors);
         setIdx(i);
-        track("blocked_jump", { targetIndex, failedStep: s });
+        track('blocked_jump', { targetIndex, failedStep: s });
         return;
       }
     }
-
     setIdx(targetIndex);
   }
 
-  // ----------------------
-  // Prev / Next
-  // ----------------------
   function prev() {
-    if (idx > 0) {
-      setIdx(idx - 1);
-    }
+    if (idx > 0) setIdx(idx - 1);
   }
 
   function next() {
     const v = validateStep(currentStep, values);
     if (!v.ok) {
       setErrors(v.errors);
-      track("validation_failed", { step: currentStep });
+      track('validation_failed', { step: currentStep });
       return;
     }
     setErrors({});
-
-    if (idx < STEPS.length - 1) {
-      setIdx(idx + 1);
-    } else {
-      finishFlow();
-    }
+    if (idx < STEPS.length - 1) setIdx(idx + 1);
+    else finishFlow();
   }
 
-  // ----------------------
-  // Finish
-  // ----------------------
   function finishFlow() {
-    track("flow_finished", { values });
-
-    // TODO: Hook up backend here
-    alert("Business formation intake complete!");
+    track('flow_finished', { values });
     autosave.clear();
+    // TODO: hook up to backend
+    // eslint-disable-next-line no-alert
+    alert('Thanks — intake complete. Connect your backend to process the data.');
   }
 
-  // ----------------------
-  // JSX for each step
-  // ----------------------
-  function renderStep() {
+  function renderStep(): JSX.Element | null {
     switch (currentStep) {
-      case "Concept":
+      case 'Concept':
         return (
           <>
             <label className="field">
@@ -159,7 +125,7 @@ export default function Main() {
               <input
                 className="input"
                 value={values.businessName}
-                onChange={(e) => setField("businessName", e.target.value)}
+                onChange={(e) => setField('businessName', e.target.value)}
                 placeholder="Acme Consulting LLC"
               />
               {errors.businessName && <div className="field-error">{errors.businessName}</div>}
@@ -170,7 +136,7 @@ export default function Main() {
               <input
                 className="input"
                 value={values.oneLiner}
-                onChange={(e) => setField("oneLiner", e.target.value)}
+                onChange={(e) => setField('oneLiner', e.target.value)}
                 placeholder="Short description of your idea"
               />
               {errors.oneLiner && <div className="field-error">{errors.oneLiner}</div>}
@@ -178,14 +144,14 @@ export default function Main() {
           </>
         );
 
-      case "Structure":
+      case 'Structure':
         return (
           <label className="field">
             <div className="label">Choose structure</div>
             <select
               className="input"
               value={values.structure}
-              onChange={(e) => setField("structure", e.target.value)}
+              onChange={(e) => setField('structure', e.target.value)}
             >
               <option>LLC</option>
               <option>S-Corp</option>
@@ -195,81 +161,81 @@ export default function Main() {
           </label>
         );
 
-      case "Name":
+      case 'Name':
         return (
           <label className="field">
             <div className="label">Domain / brand name idea</div>
             <input
               className="input"
               value={values.domainIdea}
-              onChange={(e) => setField("domainIdea", e.target.value)}
+              onChange={(e) => setField('domainIdea', e.target.value)}
               placeholder="e.g., acmecoffee.com"
             />
             {errors.domainIdea && <div className="field-error">{errors.domainIdea}</div>}
           </label>
         );
 
-      case "Registration":
+      case 'Registration':
         return (
           <label className="field">
             <div className="label">Which state will you register in?</div>
             <input
               className="input"
               value={values.registrationState}
-              onChange={(e) => setField("registrationState", e.target.value)}
+              onChange={(e) => setField('registrationState', e.target.value)}
               placeholder="Georgia"
             />
             {errors.registrationState && <div className="field-error">{errors.registrationState}</div>}
           </label>
         );
 
-      case "Financing":
+      case 'Financing':
         return (
           <label className="field">
             <div className="label">Funding need (optional)</div>
             <input
               className="input"
               value={values.fundingNeed}
-              onChange={(e) => setField("fundingNeed", e.target.value)}
+              onChange={(e) => setField('fundingNeed', e.target.value)}
               placeholder="How much capital will you start with?"
             />
           </label>
         );
 
-      case "Accounting":
+      case 'Accounting':
         return (
           <label className="field">
             <div className="label">Preferred accounting stack</div>
             <input
               className="input"
               value={values.accountingStack}
-              onChange={(e) => setField("accountingStack", e.target.value)}
+              onChange={(e) => setField('accountingStack', e.target.value)}
               placeholder="QuickBooks, Xero, Wave, etc."
             />
           </label>
         );
 
-      case "Marketing":
+      case 'Marketing':
         return (
           <label className="field">
             <div className="label">Marketing plan summary</div>
             <input
               className="input"
               value={values.marketingPlan}
-              onChange={(e) => setField("marketingPlan", e.target.value)}
+              onChange={(e) => setField('marketingPlan', e.target.value)}
               placeholder="How will customers find you?"
             />
           </label>
         );
 
-      case "Domain":
+      case 'Domain':
         return (
           <label className="field">
             <div className="label">Domain idea / availability</div>
             <input
               className="input"
               value={values.domainIdea}
-              onChange={(e) => setField("domainIdea", e.target.value)}
+              onChange={(e) => setField('domainIdea', e.target.value)}
               placeholder="Check a domain"
             />
           </label>
@@ -282,7 +248,6 @@ export default function Main() {
 
   return (
     <div className="page-bg">
-      {/* ---------------------- Header ---------------------- */}
       <header className="top-bar">
         <div className="logo">
           <div className="mark" />
@@ -290,49 +255,40 @@ export default function Main() {
         </div>
       </header>
 
-      {/* ---------------------- Step Pills ---------------------- */}
-      <div className="step-scroll">
+      <div className="step-scroll" role="tablist" aria-label="Steps">
         {STEPS.map((s, i) => (
           <button
             key={s}
-            className={`step-pill ${i === idx ? "active" : ""}`}
+            className={`step-pill ${i === idx ? 'active' : ''}`}
             onClick={() => attemptJump(i)}
+            aria-current={i === idx ? 'step' : undefined}
           >
             {s}
           </button>
         ))}
       </div>
 
-      {/* ---------------------- Main Content ---------------------- */}
       <main className="content-wrap">
-        <section className="glass-card">
+        <section className="glass-card" aria-live="polite">
           <h1 className="step-title">{currentStep}</h1>
           <p className="step-desc">Provide the required details below.</p>
-
           <div className="form-area">{renderStep()}</div>
         </section>
       </main>
 
-      {/* ---------------------- Navigation ---------------------- */}
-      <nav className="nav-buttons">
-        <button className={`btn ${idx === 0 ? "disabled" : ""}`} onClick={prev}>
+      <nav className="nav-buttons" aria-label="Wizard navigation">
+        <button className={`btn ${idx === 0 ? 'disabled' : ''}`} onClick={prev}>
           ◀ Previous
         </button>
-
-        <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-          <div className="progress">
-            <div
-              className="progress-bar"
-              style={{ width: `${((idx + 1) / STEPS.length) * 100}%` }}
-            />
+        <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+          <div className="progress" aria-hidden>
+            <div className="progress-bar" style={{ width: `${((idx + 1) / STEPS.length) * 100}%` }} />
           </div>
-
           <button className="btn primary" onClick={next}>
-            {idx === STEPS.length - 1 ? "Finish" : "Next ▶"}
+            {idx === STEPS.length - 1 ? 'Finish' : 'Next Step ▶'}
           </button>
         </div>
       </nav>
     </div>
   );
 }
-
