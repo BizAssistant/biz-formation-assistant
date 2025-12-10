@@ -2,6 +2,7 @@ import React from 'react';
 import RegistrationForm from './RegistrationForm';
 import ComplianceCheck from './ComplianceCheck';
 import StateComparison from './StateComparison';
+import EINWalkthrough from './EINWalkthrough';
 import './styles/index.scss';
 
 interface RegistrationProps {
@@ -30,6 +31,7 @@ function Registration({ plan, onNext }: RegistrationProps) {
         <section className="step-registration__right">
           <ComplianceCheck isStandard={isStandard} />
           <StateComparison isPremium={isPremium} />
+          <EINWalkthrough />
         </section>
       </div>
 
