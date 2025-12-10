@@ -1,5 +1,4 @@
 .glass-card {
-  @include glass();
   @include glow($purple, 0.45);
   @include inner-glow($cyan, 0.35);
   padding: 1.5rem;
@@ -19,7 +18,6 @@
 .step-pill.active {
   background: $gradient-metallic;
   color: #fff;
-  @include glass();
   @include glow($purple, 0.45);
   @include inner-glow($cyan, 0.35);
 }
