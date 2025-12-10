@@ -1,16 +1,18 @@
 import { handleRequest } from '../handlers/onboarding';
 import { billingHandler } from '../handlers/billing';
-import { authHandler } from '../handlers/auth';
+import { authHandler } from '../handlers/auth'
+
+export { SessionManager, RoleManager, AuditLogger };
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
-    if (url.pathname.startsWith('/api/onboarding')) {
+    if (url.pathname.startsWith('${env.WORKER_URL}/api/onboarding')) {
       return handleRequest(request, env, ctx);
-    } else if (url.pathname.startsWith('/api/billing')) {
+    } else if (url.pathname.startsWith('${env.WORKER_URL}/api/billing')) {
       return billingHandler(request, env, ctx);
-    } else if (url.pathname.startsWith('/api/auth')) {
+    } else if (url.pathname.startsWith('${env.WORKER_URL}/api/auth')) {
       return authHandler(request, env, ctx);
     }
 
