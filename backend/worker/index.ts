@@ -4,7 +4,7 @@ import { authHandler } from '../handlers/auth'
 
 export { SessionManager } from '../durable/session-manager';
 export { RoleManager } from '../durable/role-manager';
-export { AuditLogger } from '../durable/durable/audit-logger';
+export { AuditLogger } from '../durable/audit-logger';
 
 
 export default {
