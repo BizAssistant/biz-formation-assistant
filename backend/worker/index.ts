@@ -2,7 +2,10 @@ import { handleRequest } from '../handlers/onboarding';
 import { billingHandler } from '../handlers/billing';
 import { authHandler } from '../handlers/auth'
 
-export { SessionManager, RoleManager, AuditLogger };
+export { SessionManager } from '../durable/session-manager';
+export { RoleManager } from '../durable/role-manager';
+export { AuditLogger } from '../durable/audit-logger';
+
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
