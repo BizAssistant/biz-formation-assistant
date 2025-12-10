@@ -1,0 +1,45 @@
+<svg width="390" height="844" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gmet" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#6A00F4" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#00E5FF" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="#0d0710"/>
+  <g transform="translate(0,8)">
+    <rect x="14" y="12" width="362" height="88" rx="18" fill="rgba(255,255,255,0.02)"/>
+    <rect x="28" y="24" width="44" height="44" rx="8" fill="#6A00F4"/>
+    <text x="82" y="56" fill="#E8ECFF" font-family="Inter, Arial" font-weight="700" font-size="18">BizForm</text>
+
+    <!-- pill row -->
+    <g transform="translate(0,120)">
+      <rect x="14" y="0" width="120" height="36" rx="18" fill="url(#gmet)" />
+      <text x="30" y="24" fill="#fff" font-size="13" font-family="Inter, Arial">Concept</text>
+
+      <rect x="144" y="0" width="96" height="36" rx="18" fill="rgba(255,255,255,0.03)" />
+      <text x="162" y="24" fill="#E8ECFF" font-size="13">Structure</text>
+
+      <rect x="252" y="0" width="96" height="36" rx="18" fill="rgba(255,255,255,0.03)" />
+      <text x="268" y="24" fill="#E8ECFF" font-size="13">Name</text>
+    </g>
+
+    <!-- glass card -->
+    <rect x="14" y="176" width="362" height="220" rx="18" fill="rgba(255,255,255,0.06)" style="backdrop-filter: blur(14px)"/>
+    <text x="34" y="206" fill="#9B4CFF" font-family="Inter, Arial" font-weight="700" font-size="20">Concept</text>
+    <text x="34" y="234" fill="#8AB4F8" font-family="Inter, Arial" font-size="12">Let's define your business idea — keep it concise.</text>
+
+    <!-- inputs -->
+    <rect x="34" y="260" width="320" height="36" rx="8" fill="rgba(255,255,255,0.03)"/>
+    <text x="40" y="284" fill="#E8ECFF" font-size="12">Business name — Acme Consulting LLC</text>
+
+    <rect x="34" y="312" width="320" height="36" rx="8" fill="rgba(255,255,255,0.03)"/>
+    <text x="40" y="336" fill="#E8ECFF" font-size="12">One-liner — small-batch coffee roaster</text>
+  </g>
+
+  <!-- bottom nav -->
+  <rect x="0" y="744" width="390" height="100" fill="rgba(0,0,0,0.6)"/>
+  <rect x="24" y="760" width="156" height="56" rx="14" fill="rgba(255,255,255,0.04)"/>
+  <rect x="210" y="760" width="156" height="56" rx="14" fill="#6A00F4"/>
+  <text x="54" y="797" fill="#E8ECFF" font-size="14">Previous</text>
+  <text x="256" y="797" fill="#fff" font-size="14">Next Step</text>
+</svg>
