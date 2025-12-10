@@ -42,8 +42,8 @@ interface BizFormState {
 
 // ----------------------
 // Component
-// ----------------------
-export default function Landing() {
+// ----------------------qx 
+export default function Main() {
   const [idx, setIdx] = useState<number>(0);
 
   const [values, setValues] = useState<BizFormState>({
@@ -335,3 +335,4 @@ export default function Landing() {
     </div>
   );
 }
+
