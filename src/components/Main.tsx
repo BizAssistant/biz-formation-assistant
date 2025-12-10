@@ -17,7 +17,7 @@ const STEPS = [
 
 const AUTOSAVE_KEY = "bizform:v1";
 
-export default function Landing() {
+export default function Main() {
   const [idx, setIdx] = useState(0);
 
   // form state (can be expanded per step)
@@ -83,8 +83,8 @@ export default function Landing() {
   function handleFinish() {
     track("flow_finish", { values });
     // placeholder for submit:
-    // fetch('/api/onboard', { method: 'POST', body: JSON.stringify(values) })
-    //   .then(()=> autosave.clear());
+    fetch('${WORKER_URL}/api/onboard', { method: 'POST', body: JSON.stringify(values) })
+       .then(()=> autosave.clear());
     alert("Thanks — finishing flow. (hook up server submit here)");
     autosave.clear();
   }
@@ -191,3 +191,4 @@ export default function Landing() {
     </div>
   );
 }
+
