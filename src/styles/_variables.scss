@@ -1,0 +1,26 @@
+// Design tokens
+$purple-primary: #6A00F4;
+$purple-light: #9B4CFF;
+$cyan-primary: #00E5FF;
+$cyan-glow: rgba(0, 229, 255, 0.6);
+$blue-text: #8AB4F8;
+$gray-bg: #1A1A1F;
+$gray-bg-deep: #0D0D12;
+$gray-border: rgba(255, 255, 255, 0.15);
+$accent-red: #FF3B30;
+$accent-orange: #FF9500;
+$text-light: #E8ECFF;
+$text-muted: #A5B0C7;
+
+@mixin glass($alpha: 0.08, $blur: 18px) {
+  background: rgba(255, 255, 255, $alpha);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid $gray-border;
+}
+@mixin glow($r:106,$g:0,$b:244,$spread:0.5) {
+  box-shadow:
+    0 0 18px rgba($r,$g,$b,$spread),
+    inset 0 0 12px rgba($r,$g,$b,$spread/2);
+}
+$gradient-metallic: linear-gradient(135deg, rgba(106,0,244,0.95), rgba(0,229,255,0.95));
