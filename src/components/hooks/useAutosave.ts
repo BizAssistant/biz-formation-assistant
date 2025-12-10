@@ -1,4 +1,4 @@
-// src/components/hooks/useAutosave.js
+// src/components/hooks/useAutosave.ts
 import { useEffect, useRef } from "react";
 
 export default function useAutosave(key, state) {
