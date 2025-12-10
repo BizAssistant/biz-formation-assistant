@@ -41,7 +41,7 @@ binding = "DB"
 database_name = "bizform"
 database_id = "85307b62-c33f-459f-99c8-9ee8ea7043b8"
 
-[[env.secrets]]
+[env.production.secrets]
 NAMECOM_USERNAME = "jameshunterturner@gmail.com"
 NAMECOM_TOKEN = "a75db66021325ad1d64392369aab88316004fcf6"
 CLOUDFLARE_API_TOKEN = "${CF_API_TOKEN}"
@@ -56,12 +56,9 @@ enabled = true
 [observability.traces]
 enabled = true
 
-[[vars]]
+[vars]
 WORKER_URL = "https://api.bizform.turneratlanta.com/"
 CF_API_TOKEN = "${CF_API_TOKEN}"
 CF_ZONE_ID = "${CF_ZONE_ID}"
 CF_ACCESS_PUBLIC_KEY = "${CF_ACCESS_PUBLIC_KEY}"
 CF_ACCESS_AUD = "${CF_ACCESS_AUD}"
-
-
-
