@@ -1,4 +1,4 @@
-const CACHE = 'bizform-v1';
+?const CACHE = 'bizform-v1';
 const CORE = ['/', '/index.html', '/manifest.webmanifest', '/assets/logo.png'];
 
 self.addEventListener('install', (event) => {
