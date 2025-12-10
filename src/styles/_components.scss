@@ -1,5 +1,7 @@
 .glass-card {
-  @include glass(0.08, 18px);
+  @include glass(0.10, 22px);
+  @include glow($purple, 0.45);
+  @include inner-glow($cyan, 0.35);
   padding: 1.5rem;
   border-radius: 1.2rem;
   color: $text-light;
@@ -17,7 +19,9 @@
 .step-pill.active {
   background: $gradient-metallic;
   color: #fff;
-  @include glow();
+  @include glass(0.10, 22px);
+  @include glow($purple, 0.45);
+  @include inner-glow($cyan, 0.35);
 }
 .nav-buttons {
   position: fixed;
