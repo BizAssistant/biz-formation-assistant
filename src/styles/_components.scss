@@ -1,3 +1,7 @@
+@mixin glow($color, $opacity) {
+  box-shadow: 0 0 10px rgba($purple, 0.46);
+}
+
 .glass-card {
   @include glow($purple, 0.45);
   @include inner-glow($cyan, 0.35);
@@ -5,10 +9,6 @@
   border-radius: 1.2rem;
   color: $text-light;
   box-shadow: 0 0 28px rgba(0, 0, 0, 0.4);
-}
-
-@mixin glow($color, $opacity) {
-  box-shadow: 0 0 10px rgba($color, $opacity);
 }
 
 .step-pill {
