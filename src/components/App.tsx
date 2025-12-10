@@ -1,12 +1,13 @@
 import React from 'react';
-import Main from './Main';
+import Main from './Landing';
 
 function App() {
   return (
     <div id="app">
-      <Main />
+      <Landing />
     </div>
   );
 }
 
 export default App;
+
