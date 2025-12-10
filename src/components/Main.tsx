@@ -9,8 +9,9 @@ const steps = [
   { id: 'step3', name: 'Name' },
   { id: 'step4', name: 'Registration' },
   { id: 'step5', name: 'Financing' },
-  { id: 'step6', name: 'Marketing' },
-  { id: 'step7', name: 'Domain' },
+  { id: 'step6', name: 'Accounting' },
+  { id: 'step7', name: 'Marketing' },
+  { id: 'step8', name: 'Domain' }
 ];
 
 function Main() {
@@ -61,3 +62,4 @@ function Main() {
 }
 
 export default Main;
+
