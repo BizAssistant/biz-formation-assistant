@@ -1,3 +1,7 @@
+@use 'variables';
+@use 'mixins';
+@use 'components';
+
 @mixin glow($color, $opacity) {
   box-shadow: 0 0 10px rgba($purple, 0.46);
 }
